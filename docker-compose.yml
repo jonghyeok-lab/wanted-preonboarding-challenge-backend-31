@@ -1,0 +1,10 @@
+services:
+  postgre:
+    image: postgres
+    container_name: cqrs_db
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: cqrs_db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: test
