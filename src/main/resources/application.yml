@@ -16,3 +16,15 @@ logging:
   level:
     com.wanted.cqrs: debug
     sql: debug
+
+---
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/cqrs_test_db
+    username: user
+    password: test
+  jpa:
+    hibernate:
+      ddl-auto: create
+    open-in-view: false
