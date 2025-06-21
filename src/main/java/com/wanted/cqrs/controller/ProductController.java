@@ -21,6 +21,7 @@ public class ProductController {
 
     @PostMapping
     public void createProduct(@RequestBody ProductCreateRequest request) {
+        log.debug("Create product: {}", request);
         productService.create(productControllerMapper.toCreateProduct(request), request.getSellerId(), request.getBrandId());
     }
 }

@@ -4,10 +4,10 @@ import java.util.List;
 import java.util.Map;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 
 @AllArgsConstructor
-@Getter
+@Data
 public class ProductCreateRequest{
     private String name;
     private String slug;
@@ -25,7 +25,7 @@ public class ProductCreateRequest{
     private List<Integer> tags;
 
     @AllArgsConstructor
-    @Getter
+    @Data
     public static class ProductDetail {
 
         private Double weight;
@@ -38,7 +38,7 @@ public class ProductCreateRequest{
     }
 
     @AllArgsConstructor
-    @Getter
+    @Data
     public static class ProductPrice {
 
         private Long basePrice;
@@ -49,7 +49,7 @@ public class ProductCreateRequest{
     }
 
     @AllArgsConstructor
-    @Getter
+    @Data
     public static class Category {
 
         private Long categoryId;
@@ -57,7 +57,7 @@ public class ProductCreateRequest{
     }
 
     @AllArgsConstructor
-    @Getter
+    @Data
     public static class ProductOptionGroup {
         private String name;
         private Integer displayOrder;
@@ -65,7 +65,7 @@ public class ProductCreateRequest{
     }
 
     @AllArgsConstructor
-    @Getter
+    @Data
     public static class ProductOption {
         private String name;
         private Integer additionalPrice;
@@ -75,7 +75,7 @@ public class ProductCreateRequest{
     }
 
     @AllArgsConstructor
-    @Getter
+    @Data
     public static class ProductImage {
 
         private String url;

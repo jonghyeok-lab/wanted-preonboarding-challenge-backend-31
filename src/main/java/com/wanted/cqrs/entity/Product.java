@@ -1,12 +1,9 @@
 package com.wanted.cqrs.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-
-import lombok.*;
 
 @Getter
 @Builder
@@ -47,9 +44,6 @@ public class Product {
 
     @Column
     private Long brandId;
-
-    @OneToMany(cascade = CascadeType.PERSIST)
-    private List<ProductImage> productImages = new ArrayList<>();
 
     @PrePersist
     protected void onCreate() {

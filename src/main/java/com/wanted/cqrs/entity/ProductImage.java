@@ -28,4 +28,7 @@ public class ProductImage {
     @Builder.Default
     private Integer displayOrder = 0;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id", foreignKey = @ForeignKey(name = "product_image_product_id"))
+    private Product product;
 }
