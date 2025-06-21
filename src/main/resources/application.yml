@@ -28,3 +28,5 @@ spring:
     hibernate:
       ddl-auto: create
     open-in-view: false
+  jackson:
+    property-naming-strategy: SNAKE_CASE
