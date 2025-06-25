@@ -1,11 +1,9 @@
 package com.wanted.cqrs.service;
 
 import com.wanted.cqrs.entity.Product;
+import com.wanted.cqrs.entity.ProductDetail;
 import com.wanted.cqrs.entity.ProductImage;
-import com.wanted.cqrs.repository.BrandRepository;
-import com.wanted.cqrs.repository.ProductImageRepository;
-import com.wanted.cqrs.repository.ProductRepository;
-import com.wanted.cqrs.repository.SellerRepository;
+import com.wanted.cqrs.repository.*;
 import com.wanted.cqrs.service.request.ProductServiceRequest;
 import com.wanted.cqrs.service.mapper.ProductMapper;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +24,7 @@ public class ProductService {
     private final BrandRepository brandRepository;
     private final ProductRepository productRepository;
     private final ProductImageRepository productImageRepository;
+    private final ProductDetailRepository productDetailRepository;
 
 
     @Transactional
@@ -36,10 +35,18 @@ public class ProductService {
 //        brandRepository.findById(brandId)
 //                .orElseThrow(() -> new IllegalArgumentException("Invalid brandId: " + brandId));
 
+        // 상품
         Product product = productMapper.toProductEntity(createProduct, sellerId, brandId);
-        Product savedProduct = productRepository.save(product);
+        productRepository.save(product);
 
-        List<ProductImage> productImage = productMapper.toProductImageEntity(createProduct, savedProduct);
+        // 상품 상세
+        ProductDetail productDetail = productMapper.toProductDetailEntity(createProduct, product);
+        productDetailRepository.save(productDetail);
+
+        // 상품 이미지
+        List<ProductImage> productImage = productMapper.toProductImageEntity(createProduct, product);
         productImageRepository.saveAll(productImage);
+
+
     }
 }
