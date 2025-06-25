@@ -3,6 +3,7 @@ package com.wanted.cqrs.service;
 import com.wanted.cqrs.entity.Product;
 import com.wanted.cqrs.entity.ProductDetail;
 import com.wanted.cqrs.entity.ProductImage;
+import com.wanted.cqrs.entity.ProductPrice;
 import com.wanted.cqrs.repository.*;
 import com.wanted.cqrs.service.request.ProductServiceRequest;
 import com.wanted.cqrs.service.mapper.ProductMapper;
@@ -25,6 +26,7 @@ public class ProductService {
     private final ProductRepository productRepository;
     private final ProductImageRepository productImageRepository;
     private final ProductDetailRepository productDetailRepository;
+    private final ProductPriceRepository productPriceRepository;
 
 
     @Transactional
@@ -42,6 +44,10 @@ public class ProductService {
         // 상품 상세
         ProductDetail productDetail = productMapper.toProductDetailEntity(createProduct, product);
         productDetailRepository.save(productDetail);
+
+        // 상품 가격
+        ProductPrice productPrice = productMapper.toProductPriceEntity(createProduct, product);
+        productPriceRepository.save(productPrice);
 
         // 상품 이미지
         List<ProductImage> productImage = productMapper.toProductImageEntity(createProduct, product);

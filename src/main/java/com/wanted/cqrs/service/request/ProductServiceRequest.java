@@ -1,5 +1,6 @@
 package com.wanted.cqrs.service.request;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -41,11 +42,11 @@ public class ProductServiceRequest {
     @Builder
     public static class ProductPrice {
 
-        private Long basePrice;
-        private Long salePrice;
-        private Long costPrice;
+        private BigDecimal basePrice;
+        private BigDecimal salePrice;
+        private BigDecimal costPrice;
         private String currency;
-        private Integer taxRate;
+        private BigDecimal taxRate;
     }
 
     @Builder

@@ -1,9 +1,6 @@
 package com.wanted.cqrs.service.mapper;
 
-import com.wanted.cqrs.entity.Product;
-import com.wanted.cqrs.entity.ProductDetail;
-import com.wanted.cqrs.entity.ProductImage;
-import com.wanted.cqrs.entity.ProductStatus;
+import com.wanted.cqrs.entity.*;
 import com.wanted.cqrs.service.request.ProductServiceRequest;
 import org.springframework.stereotype.Component;
 
@@ -58,6 +55,19 @@ public class ProductMapper {
                 .countryOfOrigin(productDetailDto.getCountryOfOrigin())
                 .materials(productDetailDto.getMaterials())
                 .warrantyInfo(productDetailDto.getWarrantyInfo())
+                .build();
+    }
+
+    public ProductPrice toProductPriceEntity(ProductServiceRequest.CreateProduct createProduct, Product product) {
+        ProductServiceRequest.ProductPrice productPriceDto = createProduct.getProductPrice();
+
+        return ProductPrice.builder()
+                .taxRate(productPriceDto.getTaxRate())
+                .basePrice(productPriceDto.getBasePrice())
+                .salePrice(productPriceDto.getSalePrice())
+                .currency(productPriceDto.getCurrency())
+                .costPrice(productPriceDto.getCostPrice())
+                .product(product)
                 .build();
     }
 }
